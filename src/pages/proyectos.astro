@@ -1,0 +1,477 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const proyectos = [
+  {
+    id: 1,
+    titulo: "Casa Minimalista Los Altos",
+    ubicacion: "Guadalajara, México",
+    año: "2024",
+    categoria: "Residencial",
+    area: "350 m²",
+    imagen: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+    descripcion: "Diseño contemporáneo que integra espacios abiertos con elementos naturales, maximizando la luz natural y creando una conexión armoniosa entre interior y exterior.",
+    características: [
+      "Techos de doble altura",
+      "Ventanales de piso a techo",
+      "Jardín interior",
+      "Sistemas de energía solar"
+    ]
+  },
+  {
+    id: 2,
+    titulo: "Oficinas Corporativas TechHub",
+    ubicacion: "Playa del Carmen, México",
+    año: "2024",
+    categoria: "Comercial",
+    area: "1,200 m²",
+    imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+    descripcion: "Espacios de trabajo que fomentan la creatividad y la colaboración, con áreas flexibles y tecnología integrada para el trabajo moderno.",
+    características: [
+      "Espacios colaborativos",
+      "Tecnología integrada",
+      "Áreas de descanso",
+      "Certificación LEED"
+    ]
+  },
+  {
+    id: 3,
+    titulo: "Villa Costera Estrella del Mar",
+    ubicacion: "Riviera Maya, México",
+    año: "2023",
+    categoria: "Residencial",
+    area: "450 m²",
+    imagen: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop",
+    descripcion: "Arquitectura que abraza el entorno tropical con materiales locales, creando un refugio de lujo en armonía con la naturaleza costera.",
+    características: [
+      "Palapa tradicional moderna",
+      "Infinity pool",
+      "Materiales locales",
+      "Vista panorámica al mar"
+    ]
+  },
+  {
+    id: 4,
+    titulo: "Centro Cultural Metropolitano",
+    ubicacion: "Guadalajara, México",
+    año: "2023",
+    categoria: "Cultural",
+    area: "2,800 m²",
+    imagen: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop",
+    descripción: "Espacio cultural que integra tradición y modernidad, diseñado para albergar exposiciones, conferencias y eventos comunitarios.",
+    características: [
+      "Auditorio para 400 personas",
+      "Galerías de exposición",
+      "Espacios multifuncionales",
+      "Accesibilidad universal"
+    ]
+  },
+  {
+    id: 5,
+    titulo: "Residencial Jardines del Lago",
+    ubicacion: "Chapala, Jalisco",
+    año: "2022",
+    categoria: "Residencial",
+    area: "280 m²",
+    imagen: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+    descripción: "Conjunto residencial que respeta el entorno lacustre, con diseños que aprovechan las vistas y la brisa natural del lago.",
+    características: [
+      "Vista al lago de Chapala",
+      "Ventilación cruzada",
+      "Jardines privados",
+      "Materiales regionales"
+    ]
+  },
+  {
+    id: 6,
+    titulo: "Hotel Boutique Casa del Sol",
+    ubicacion: "Tulum, Quintana Roo",
+    año: "2022",
+    categoria: "Hospitalidad",
+    area: "1,800 m²",
+    imagen: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
+    descripción: "Hotel boutique que fusiona el lujo contemporáneo con la esencia maya, creando una experiencia única en la selva de Tulum.",
+    características: [
+      "15 suites de lujo",
+      "Spa con cenote privado",
+      "Arquitectura bioclimática",
+      "Integración con la selva"
+    ]
+  }
+];
+
+const categorias = ['Todos', 'Residencial', 'Comercial', 'Cultural', 'Hospitalidad'];
+---
+
+<Layout title="Proyectos - TAANAB Arquitectos" description="Explora nuestra colección de proyectos arquitectónicos que demuestran nuestra experiencia en diseño residencial, comercial y cultural.">
+  <Navigation />
+  
+  <main class="proyectos-page">
+    <header class="page-hero">
+      <div class="container">
+        <h1 class="page-title">NUESTROS PROYECTOS</h1>
+        <p class="page-subtitle">
+          Una colección de espacios únicos que reflejan nuestra pasión por la 
+          arquitectura contemporánea y el diseño sostenible.
+        </p>
+      </div>
+    </header>
+
+    <section class="proyectos-content">
+      <div class="container">
+        <!-- Filtros -->
+        <div class="filtros">
+          {categorias.map((categoria) => (
+            <button 
+              class={`filtro-btn ${categoria === 'Todos' ? 'active' : ''}`}
+              data-categoria={categoria.toLowerCase()}
+            >
+              {categoria}
+            </button>
+          ))}
+        </div>
+
+        <!-- Grid de proyectos -->
+        <div class="proyectos-grid" id="proyectosGrid">
+          {proyectos.map((proyecto) => (
+            <article class="proyecto-item" data-categoria={proyecto.categoria.toLowerCase()}>
+              <div class="proyecto-imagen">
+                <img src={proyecto.imagen} alt={proyecto.titulo} loading="lazy" />
+                <div class="proyecto-overlay">
+                  <div class="proyecto-meta">
+                    <span class="proyecto-año">{proyecto.año}</span>
+                    <span class="proyecto-area">{proyecto.area}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="proyecto-info">
+                <div class="proyecto-header">
+                  <h3 class="proyecto-titulo">{proyecto.titulo}</h3>
+                  <span class="proyecto-categoria">{proyecto.categoria}</span>
+                </div>
+                
+                <p class="proyecto-ubicacion">{proyecto.ubicacion}</p>
+                <p class="proyecto-descripcion">{proyecto.descripcion}</p>
+                
+                <ul class="proyecto-caracteristicas">
+                  {proyecto.características.map((caracteristica) => (
+                    <li>{caracteristica}</li>
+                  ))}
+                </ul>
+                
+                <a href={`/proyectos/${proyecto.id}`} class="ver-proyecto-btn">
+                  Ver Detalles
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filtros = document.querySelectorAll('.filtro-btn');
+    const proyectos = document.querySelectorAll('.proyecto-item');
+    
+    filtros.forEach(filtro => {
+      filtro.addEventListener('click', () => {
+        // Remover clase active de todos los filtros
+        filtros.forEach(f => f.classList.remove('active'));
+        
+        // Agregar clase active al filtro clickeado
+        filtro.classList.add('active');
+        
+        const categoria = (filtro as HTMLElement).dataset.categoria;
+        
+        // Filtrar proyectos
+        proyectos.forEach(proyecto => {
+          const proyectoElement = proyecto as HTMLElement;
+          if (categoria === 'todos' || proyectoElement.dataset.categoria === categoria) {
+            proyectoElement.style.display = 'block';
+            proyectoElement.style.animation = 'fadeInUp 0.5s ease';
+          } else {
+            proyectoElement.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Animación de entrada para los proyectos
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).style.animation = 'fadeInUp 0.6s ease forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    proyectos.forEach(proyecto => {
+      observer.observe(proyecto);
+    });
+  });
+</script>
+
+<style>
+  .proyectos-page {
+    padding-top: 80px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .page-hero {
+    background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #2c2c2c;
+    margin-bottom: 2rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .proyectos-content {
+    padding: 6rem 0;
+  }
+
+  .filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .filtro-btn {
+    padding: 0.8rem 2rem;
+    border: 1px solid #e0e0e0;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .filtro-btn:hover,
+  .filtro-btn.active {
+    background: #2c2c2c;
+    color: white;
+    border-color: #2c2c2c;
+  }
+
+  .proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+  }
+
+  .proyecto-item {
+    background: white;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .proyecto-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .proyecto-imagen {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .proyecto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .proyecto-item:hover .proyecto-imagen img {
+    transform: scale(1.05);
+  }
+
+  .proyecto-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .proyecto-item:hover .proyecto-overlay {
+    opacity: 1;
+  }
+
+  .proyecto-meta {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .proyecto-año,
+  .proyecto-area {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c2c2c;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .proyecto-info {
+    padding: 2rem;
+  }
+
+  .proyecto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .proyecto-titulo {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #2c2c2c;
+    letter-spacing: 1px;
+  }
+
+  .proyecto-categoria {
+    background: #f8f8f8;
+    color: #8B4513;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  .proyecto-ubicacion {
+    color: #8B4513;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .proyecto-descripcion {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .proyecto-caracteristicas {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .proyecto-caracteristicas li {
+    color: #666;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .proyecto-caracteristicas li::before {
+    content: '•';
+    color: #8B4513;
+    position: absolute;
+    left: 0;
+  }
+
+  .ver-proyecto-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2c2c2c;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+
+  .ver-proyecto-btn:hover {
+    color: #8B4513;
+  }
+
+  .ver-proyecto-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .ver-proyecto-btn:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 4rem 0;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    .proyectos-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .filtros {
+      gap: 0.5rem;
+    }
+
+    .filtro-btn {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .proyecto-header {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+  }
+</style>
