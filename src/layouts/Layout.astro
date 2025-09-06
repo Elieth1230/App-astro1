@@ -1,5 +1,5 @@
 ---
-import Navigation from '../components/NavigationDropdown.astro';
+import Navigation from '../components/Navigation.astro';
 
 export interface Props {
 	title?: string;
@@ -34,31 +34,52 @@ const {
 </html>
 
 <style is:global>
-	/* Scroll personalizado */
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	/* Scroll personalizado usando @apply */
+	@layer utilities {
+		.custom-scrollbar::-webkit-scrollbar {
+			@apply w-2;
+		}
+
+		.custom-scrollbar::-webkit-scrollbar-track {
+			@apply bg-gray-100;
+		}
+
+		.custom-scrollbar::-webkit-scrollbar-thumb {
+			@apply bg-amber-700 rounded;
+		}
+
+		.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+			@apply bg-amber-800;
+		}
+	}
+
+	/* Aplicar scroll personalizado globalmente */
 	::-webkit-scrollbar {
-		width: 8px;
+		@apply w-2;
 	}
 
 	::-webkit-scrollbar-track {
-		background: #f1f1f1;
+		@apply bg-gray-100;
 	}
 
 	::-webkit-scrollbar-thumb {
-		background: #8B4513;
-		border-radius: 4px;
+		@apply bg-amber-700 rounded;
 	}
 
 	::-webkit-scrollbar-thumb:hover {
-		background: #6B3410;
+		@apply bg-amber-800;
 	}
 
-	/* Focus styles para accesibilidad */
+	/* Focus styles usando @apply */
 	:focus {
-		outline: 2px solid #8B4513;
-		outline-offset: 2px;
+		@apply outline-2 outline-amber-700 outline-offset-2;
 	}
 
 	:focus:not(:focus-visible) {
-		outline: none;
+		@apply outline-none;
 	}
 </style>
