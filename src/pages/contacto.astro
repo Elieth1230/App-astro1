@@ -37,20 +37,24 @@ import Footer from '../components/Footer.astro';
         <div class="bg-white p-6 lg:p-8">
           <h1 class="text-3xl lg:text-4xl font-light text-gray-800 mb-10 tracking-wider">Contacto</h1>
           
-          <form class="space-y-6">
+          <form id="contact-form" class="space-y-6">
             <div>
               <input 
                 type="text" 
-                name="name" 
+                name="user_name" 
+                id="user_name"
                 placeholder="Nombre"
+                required
                 class="w-full border-0 border-b-2 border-gray-300 bg-transparent pb-3 text-gray-800 placeholder-gray-500 focus:border-amber-600 focus:outline-none text-lg transition-colors duration-300">
             </div>
             
             <div>
               <input 
                 type="email" 
-                name="email" 
+                name="user_email" 
+                id="user_email"
                 placeholder="E-mail"
+                required
                 class="w-full border-0 border-b-2 border-gray-300 bg-transparent pb-3 text-gray-800 placeholder-gray-500 focus:border-amber-600 focus:outline-none text-lg transition-colors duration-300"
               >
             </div>
@@ -58,7 +62,8 @@ import Footer from '../components/Footer.astro';
             <div>
               <input 
                 type="tel" 
-                name="phone" 
+                name="user_phone" 
+                id="user_phone"
                 placeholder="Teléfono"
                 class="w-full border-0 border-b-2 border-gray-300 bg-transparent pb-3 text-gray-800 placeholder-gray-500 focus:border-amber-600 focus:outline-none text-lg transition-colors duration-300"
               >
@@ -67,8 +72,10 @@ import Footer from '../components/Footer.astro';
             <div>
               <textarea 
                 name="message" 
+                id="message"
                 placeholder="Mensaje"
                 rows="5"
+                required
                 class="w-full border-0 border-b-2 border-gray-300 bg-transparent pb-3 text-gray-800 placeholder-gray-500 focus:border-amber-600 focus:outline-none text-lg transition-colors duration-300 resize-none"
               ></textarea>
             </div>
@@ -76,10 +83,22 @@ import Footer from '../components/Footer.astro';
             <div class="flex justify-center">
               <button 
                 type="submit"
-                class="bg-stone-200 text-stone-700 px-10 py-3 text-lg font-medium tracking-wider uppercase hover:bg-stone-300 transition-colors duration-300 mt-6 rounded-lg"
+                id="submit-btn"
+                class="bg-stone-200 text-stone-700 px-10 py-3 text-lg font-medium tracking-wider uppercase hover:bg-stone-300 transition-colors duration-300 mt-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar
+                <span id="btn-text">Enviar</span>
+                <span id="btn-loading" class="hidden">Enviando...</span>
               </button>
+            </div>
+            
+            <!-- Mensajes de estado -->
+            <div id="form-messages" class="text-center mt-4 hidden">
+              <div id="success-message" class="text-green-600 hidden">
+                ✅ ¡Mensaje enviado correctamente! Te responderemos pronto.
+              </div>
+              <div id="error-message" class="text-red-600 hidden">
+                ❌ Error al enviar el mensaje. Por favor, intenta nuevamente.
+              </div>
             </div>
           </form>
         </div>
@@ -135,4 +154,110 @@ import Footer from '../components/Footer.astro';
   
   <Footer />
 </Layout>
+
+<script>
+  // Configuración de EmailJS
+  document.addEventListener('DOMContentLoaded', function() {
+    //Mi  Public Key  
+   
+    (window as any).emailjs.init('QySFv97htZS_3-vsp');
+    
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const btnText = document.getElementById('btn-text') as HTMLElement;
+    const btnLoading = document.getElementById('btn-loading') as HTMLElement;
+    const formMessages = document.getElementById('form-messages') as HTMLElement;
+    const successMessage = document.getElementById('success-message') as HTMLElement;
+    const errorMessage = document.getElementById('error-message') as HTMLElement;
+    
+    if (!form || !submitBtn || !btnText || !btnLoading || !formMessages || !successMessage || !errorMessage) {
+      console.error('Elementos del formulario no encontrados');
+      return;
+    }
+    
+    form.addEventListener('submit', function(e: Event) {
+      e.preventDefault();
+      
+      // Mostrar estado de carga
+      submitBtn.disabled = true;
+      btnText.classList.add('hidden');
+      btnLoading.classList.remove('hidden');
+      
+      // Ocultar mensajes previos
+      formMessages.classList.add('hidden');
+      successMessage.classList.add('hidden');
+      errorMessage.classList.add('hidden');
+      
+      // Obtener valores de forma segura
+      const userNameEl = document.getElementById('user_name') as HTMLInputElement;
+      const userEmailEl = document.getElementById('user_email') as HTMLInputElement;
+      const userPhoneEl = document.getElementById('user_phone') as HTMLInputElement;
+      const messageEl = document.getElementById('message') as HTMLTextAreaElement;
+      
+      if (!userNameEl || !userEmailEl || !messageEl) {
+        console.error('Campos del formulario no encontrados');
+        return;
+      }
+      
+      // Parámetros del email
+      const templateParams = {
+        user_name: userNameEl.value,
+        user_email: userEmailEl.value,
+        user_phone: userPhoneEl?.value || '',
+        message: messageEl.value,
+        to_email: 'eliezer2vazquez@gmail.com', // Email principal
+        reply_to: userEmailEl.value
+      };
+      
+      // Enviar al email principal
+      (window as any).emailjs.send('service_ru5s9hl', 'template_5dm8os8', templateParams)
+        .then(function(response: any) {
+          console.log('Email principal enviado:', response);
+          
+          //  copia a otro email 
+          const copyParams = {
+            ...templateParams,
+            to_email: 'contacto@taanab.mx' //   email que  recibira copia
+          };
+          
+          return (window as any).emailjs.send('service_ru5s9hl', 'template_5dm8os8', copyParams);
+        })
+        .then(function(response: any) {
+          console.log('Copia enviada:', response);
+          
+          // Enviar email de confirmación al cliente
+          const confirmationParams = {
+            user_name: templateParams.user_name,
+            user_email: templateParams.user_email,
+            to_email: templateParams.user_email
+          };
+          
+          return (window as any).emailjs.send('service_ru5s9hl', 'template_z8ej13f', confirmationParams); // email de confirmación al cliente
+        })
+        .then(function(response: any) {
+          console.log('Email de confirmación enviado:', response);
+          
+          // Mostrar mensaje de éxito
+          successMessage.classList.remove('hidden');
+          formMessages.classList.remove('hidden');
+          
+          // Limpiar formulario
+          form.reset();
+        })
+        .catch(function(error: any) {
+          console.error('Error:', error);
+          
+          // Mostrar mensaje de error
+          errorMessage.classList.remove('hidden');
+          formMessages.classList.remove('hidden');
+        })
+        .finally(function() {
+          // Restaurar botón
+          submitBtn.disabled = false;
+          btnText.classList.remove('hidden');
+          btnLoading.classList.add('hidden');
+        });
+    });
+  });
+</script>
 
