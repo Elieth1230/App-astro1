@@ -2,23 +2,36 @@
 // Footer elegante estilo arquitectónico con Tailwind
 ---
 
-<footer class="relative bg-white text-gray-800 overflow-hidden h-40">
+<footer class="relative bg-white text-gray-800 overflow-hidden h-28">
   <!-- Patrón de puntos grises en el fondo izquierdo -->
   <div class="absolute inset-0 opacity-20">
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.4) 2px, transparent 0); background-size: 24px 24px;"></div>
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.4) 1px, transparent 0); background-size: 6px 6px;"></div>
             </div>
   
   <!-- Sección negra a la derecha con puntos blancos -->
   <div class="absolute top-0 right-0 w-80 h-full bg-black">
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.8) 2px, transparent 0); background-size: 20px 20px;"></div>
+    <!-- Patrón de puntos con máscara para rodear la imagen -->
+    <div class="absolute inset-0" style="
+      background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.8) 2px, transparent 0); 
+      background-size: 20px 20px;
+      mask: radial-gradient(ellipse 140px 70px at center, transparent 40%, black 45%);
+      -webkit-mask: radial-gradient(ellipse 140px 70px at center, transparent 40%, black 45%);
+    "></div>
+    
+    <!-- Imagen centrada en la sección negra -->
+    <div class="absolute inset-0 flex items-center justify-center z-30">
+      <picture>
+        <img src="https://taanab.mx/images/home/textwhite.svg" alt="Logo" class="h-20 w-auto opacity-100 drop-shadow-lg">
+      </picture>
+    </div>
   </div>
 
   <!-- Contenido del footer -->
   <div class="relative z-10 h-full flex items-center">
-    <div class="w-full flex items-center">
+    <div class="max-w-5xl mx-auto flex items-center w-full px-8">
       
       <!-- Logo y nombre a la izquierda -->
-      <div class="pl-8">
+      <div class="flex-shrink-0">
         <a href="/" class="logo flex items-center gap-3">
           <!-------- Logo -------->
           <img 
@@ -45,7 +58,7 @@
       </div>
       
       <!-- Espacio para la sección negra -->
-      <div class="w-80"></div>
+      <div class="w-80 flex-shrink-0"></div>
       
     </div>
   </div>

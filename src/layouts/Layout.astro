@@ -21,17 +21,17 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		
-		<!-- Google Fonts -->
+		<!-- Google Fonts - Montserrat -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 		
 		<!-- EmailJS SDK -->
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 		
 		<title>{title}</title>
 	</head>
-	<body class="font-sans text-gray-800 bg-white overflow-x-hidden">
+	<body class="font-montserrat text-gray-800 bg-white overflow-x-hidden">
 		<slot />
 	</body>
 </html>
@@ -40,6 +40,34 @@ const {
 	@tailwind base;
 	@tailwind components;
 	@tailwind utilities;
+
+	/* Configuración base para Montserrat */
+	@layer base {
+		body {
+			font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 400;
+			font-style: normal;
+		}
+		
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Montserrat', system-ui, sans-serif;
+			font-weight: 300;
+		}
+	}
+
+	/* Utilidades personalizadas para Montserrat */
+	@layer utilities {
+		.font-montserrat-thin { font-weight: 100; }
+		.font-montserrat-extralight { font-weight: 200; }
+		.font-montserrat-light { font-weight: 300; }
+		.font-montserrat-normal { font-weight: 400; }
+		.font-montserrat-medium { font-weight: 500; }
+		.font-montserrat-semibold { font-weight: 600; }
+		.font-montserrat-bold { font-weight: 700; }
+		.font-montserrat-extrabold { font-weight: 800; }
+		.font-montserrat-black { font-weight: 900; }
+	}
 
 	/* Scroll personalizado usando @apply */
 	@layer utilities {

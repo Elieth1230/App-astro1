@@ -7,16 +7,16 @@ import Footer from '../components/Footer.astro';
 <Layout title="Proyectos - TAANAB Arquitectos" description="Explora nuestros proyectos de arquitectura residencial, remodelación e interiores.">
   <Navigation />
   
-  <main class="pt-20 min-h-screen bg-gray-50">
-    <div class="max-w-7xl mx-auto px-8 py-16">
+  <main class="pt-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-8">
       
       
 
       <!-- lista  de Proyectos -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 h-[calc(100vh-132px)]">
         
         <!-- Proyecto Residencial -->
-        <a href="/proyectos/residencial" class="block group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-96">
+        <a href="/proyectos/residencial" class="block group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-full">
           <img 
             src="https://taanab.mx/images/proyects/residencial.jpg"
             alt="Proyecto Residencial"
@@ -32,7 +32,7 @@ import Footer from '../components/Footer.astro';
         </a>
 
         <!-- Proyecto Remodelación -->
-        <a href="/proyectos/remodelacion" class="block group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-96">
+        <a href="/proyectos/remodelacion" class="block group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-full">
           <img 
             src="https://taanab.mx/images/proyects/remodelacion.jpg"
             alt="Proyecto Remodelación"
@@ -49,7 +49,7 @@ import Footer from '../components/Footer.astro';
         </a>
 
         <!-- Proyecto Interiores -->
-        <a href="/proyectos/interiores" class="block group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-96">
+        <a href="/proyectos/interiores" class="block group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer h-full">
           <img 
             src="	https://taanab.mx/images/proyects/interiores.jpg"
             alt="Proyecto Interiores"
