@@ -6,7 +6,7 @@ const isInternalPage = currentPath.includes('/proyectos') || currentPath.include
 ---
 
 <!-- Barra superior fija con padding lateral -->
-<div class={`fixed top-0 left-0 right-0 ${isInternalPage ? 'bg-white/90' : 'bg-white/5'} backdrop-blur-xl border ${isInternalPage ? 'border-gray-200' : 'border-white/5'} rounded-lg z-50 transition-all duration-300 translate-y-0`} id="topBar">
+<div class="fixed top-0 left-0 right-0 bg-white/[0.02] backdrop-blur-[1px] border border-white/[0.05] z-50 translate-y-0 transition-none shadow-2xl" id="topBar">
   <div class="px-8 py-11 flex justify-between items-center">
     <a href="/" class="logo flex items-center gap-3 ml-24">
       <!-------- Logo -------->

@@ -3,27 +3,14 @@
 ---
 
 <footer class="relative bg-white text-gray-800 overflow-hidden h-28">
-  <!-- Patrón de puntos grises en el fondo izquierdo -->
+  <!-- Patrón de puntos grises en el fondo -->
   <div class="absolute inset-0 opacity-20">
     <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.4) 1px, transparent 0); background-size: 6px 6px;"></div>
-            </div>
-  
-  <!-- Sección negra a la derecha con puntos blancos -->
-  <div class="absolute top-0 right-0 w-80 h-full bg-black">
-    <!-- Patrón de puntos con máscara para rodear la imagen -->
-    <div class="absolute inset-0" style="
-      background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.8) 2px, transparent 0); 
-      background-size: 20px 20px;
-      mask: radial-gradient(ellipse 140px 70px at center, transparent 40%, black 45%);
-      -webkit-mask: radial-gradient(ellipse 140px 70px at center, transparent 40%, black 45%);
-    "></div>
-    
-    <!-- Imagen centrada en la sección negra -->
-    <div class="absolute inset-0 flex items-center justify-center z-30">
-      <picture>
-        <img src="https://taanab.mx/images/home/textwhite.svg" alt="Logo" class="h-20 w-auto opacity-100 drop-shadow-lg">
-      </picture>
-    </div>
+  </div>
+
+  <!-- Imagen a la derecha -->
+  <div class="absolute top-0 right-0 w-96 h-full">
+    <img src="/img/img10.png" alt="Footer Background" class="w-full h-full object-cover">
   </div>
 
   <!-- Contenido del footer -->
@@ -49,16 +36,13 @@
       </div>
 
       <!--- Información de contacto centrada --->
-      <div class="flex-1 flex justify-center">
+      <div class="flex-1 flex justify-center pr-96">
         <div class="space-y-1 text-center">
           <p class="font-medium text-gray-800 text-lg">contacto@taanab.mx</p>
           <p class="text-gray-700 text-sm">Concentro E18, Av Vallarta 6503</p>
           <p class="text-gray-700 text-sm">Zapopan, Jalisco. México.</p>
         </div>
       </div>
-      
-      <!-- Espacio para la sección negra -->
-      <div class="w-80 flex-shrink-0"></div>
       
     </div>
   </div>
