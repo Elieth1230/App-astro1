@@ -83,7 +83,7 @@ import Footer from '../../../components/Footer.astro';
 </Layout>
 
 <script>
-  // Galería de imágenes 
+  // Galería de imágenes con efectos hover mantenidos
   document.addEventListener('DOMContentLoaded', () => {
     const mainImage = document.getElementById('main-image') as HTMLImageElement;
     const thumbnails = document.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLImageElement>;
@@ -92,10 +92,18 @@ import Footer from '../../../components/Footer.astro';
       thumb.addEventListener('click', () => {
         const newSrc = thumb.getAttribute('data-src');
         if (newSrc && mainImage) {
+          // Cambiar imagen manteniendo los efectos
           mainImage.src = newSrc;
           mainImage.alt = thumb.alt;
+          
+          // Asegurar que los efectos hover se mantengan
+          const imageContainer = mainImage.parentElement;
+          if (imageContainer) {
+            imageContainer.classList.add('group');
+          }
         }
       });
     });
   });
+</script>
 </script>
