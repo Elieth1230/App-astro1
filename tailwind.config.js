@@ -6,8 +6,9 @@ export default {
       fontFamily: {
         'montserrat': ['Montserrat', 'system-ui', 'sans-serif'],
         'sans': ['Montserrat', 'system-ui', 'sans-serif'], // También como fuente por defecto
-      
-      
+      },
+      colors: {
+        'custom-hover': 'oklch(70.9% 0.01 56.259)',
       },
     },
   },
