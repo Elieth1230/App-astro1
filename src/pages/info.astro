@@ -6,78 +6,79 @@ import Footer from '../components/Footer.astro';
 
 <Layout title="Informacion sobre TAANAB" description="Conoce sobre nosotros">
     <Navigation />
-  <main class="pt-32" style="font-family: 'Galilea', serif;">
+  <main class="pt-16 sm:pt-20 md:pt-24 lg:pt-28 xl:pt-32" style="font-family: 'Galilea', serif;">
 
 
-    <section class="px-24">
-      <div class="max-w-6xl mx-auto">
+    <section class="px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24">
+      <div class="max-w-sm sm:max-w-md md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
         <!-- Primera sección: Texto izquierda, imagen derecha -->
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-          <div class="p-12 flex flex-col justify-center w-[467.5px] h-[380px]">
-            <h2 class="text-2xl font-semibold mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 24px;">Estudio</h2>
-            <p class="text-gray-700 mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 12px;">
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-0 xl:gap-0">
+          <div class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center w-full sm:w-full md:w-full lg:w-[467.5px] xl:w-[467.5px] h-auto sm:h-auto md:h-auto lg:h-[380px] xl:h-[380px]">
+            <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl font-semibold mb-4 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-6" style="font-family: 'Montserrat', sans-serif;">Estudio</h2>
+            <p class="text-gray-700 mb-4 text-xs sm:text-xs md:text-sm lg:text-xs xl:text-xs" style="font-family: 'Montserrat', sans-serif;">
               TAANAB Arquitectos es un estudio creativo de diseño, enfocado en la exploración permanente de crear y materializar experiencias únicas a través de espacios memorables que trasciendan a su contemporaneidad
             </p>
             
           </div>
-          <div>
+          <div class="flex justify-center lg:justify-start xl:justify-start">
             <img 
               src="https://taanab.mx/images/about/perfil.jpg" 
               alt="Arquitectura moderna" 
-              class="w-[467.5px] h-[380px] object-cover"
+              class="w-full sm:w-full md:w-full lg:w-[467.5px] xl:w-[467.5px] h-48 sm:h-56 md:h-64 lg:h-[380px] xl:h-[380px] object-cover rounded-lg sm:rounded-lg md:rounded-lg lg:rounded-none xl:rounded-none"
             />
           </div>
         </div>
 
         <!-- Segunda sección: Imagen izquierda, texto derecha -->
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-          <div class="order-2 lg:order-1">
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-0 xl:gap-0 mt-8 sm:mt-10 md:mt-12 lg:mt-16 xl:mt-16">
+          <div class="order-2 sm:order-2 md:order-2 lg:order-1 xl:order-1 flex justify-center lg:justify-start xl:justify-start">
             <img 
               src="https://taanab.mx/images/about/proceso.jpg" 
               alt="Diseño interior" 
-              class="w-[467.5px] h-[380px] object-cover"
+              class="w-full sm:w-full md:w-full lg:w-[467.5px] xl:w-[467.5px] h-48 sm:h-56 md:h-64 lg:h-[380px] xl:h-[380px] object-cover rounded-lg sm:rounded-lg md:rounded-lg lg:rounded-none xl:rounded-none"
             />
           </div>
-          <div class="order-1 lg:order-2 p-12 flex flex-col justify-center w-[467.5px] h-[380px]">
-            <h2 class="text-2xl font-semibold mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 24px;">Proceso</h2>
-            <p class="text-gray-700 mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 12px;">
+          <div class="order-1 sm:order-1 md:order-1 lg:order-2 xl:order-2 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center w-full sm:w-full md:w-full lg:w-[467.5px] xl:w-[467.5px] h-auto sm:h-auto md:h-auto lg:h-[380px] xl:h-[380px]">
+            <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl font-semibold mb-4 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-6" style="font-family: 'Montserrat', sans-serif;">Proceso</h2>
+            <p class="text-gray-700 mb-4 text-xs sm:text-xs md:text-sm lg:text-xs xl:text-xs" style="font-family: 'Montserrat', sans-serif;">
               Cada usuario es único, por ello es necesario garantizar un ánalisis exhaustivo de las necesidades de su entorno -sociales y del medio ambiente-, a través de un equipo de trabajo interdisciplinario, encontrando así distintas perspectivas que nos guíen a respuestas objetivas. Nuestras soluciones se mantienen fieles a los materiales empleados y respetamos su naturaleza. Percibimos y comprendemos el valor y la aplicación apropiada del grano de mármol y granito. Aprovechamos la estética de las líneas dibujadas en el cemento y piedra. Lo más importante, estamos completamente apasionados por el detalle y la artesanía.
             
           </div> 
         </div>
 
         <!-- Tercera sección: Texto izquierda, imagen derecha -->
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-          <div class="p-12 flex flex-col justify-center w-[467.5px] h-[380px]">
-            <h2 class="text-2xl font-semibold mb-6" style="font-family: 'Montserrat', sans-serif; font-size: 24px;">Servicios</h2>
-            <h3 class="text-xl font-semibold mb-3" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Arquitectura</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-0 xl:gap-0 mt-8 sm:mt-10 md:mt-12 lg:mt-16 xl:mt-16">
+          <div class="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 flex flex-col justify-center w-full sm:w-full md:w-full lg:w-[467.5px] xl:w-[467.5px] h-auto sm:h-auto md:h-auto lg:h-[380px] xl:h-[380px]">
+            <h2 class="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl font-semibold mb-4 sm:mb-4 md:mb-5 lg:mb-6 xl:mb-6" style="font-family: 'Montserrat', sans-serif;">Servicios</h2>
+            <h3 class="text-base sm:text-base md:text-lg lg:text-xl xl:text-xl font-semibold mb-2 sm:mb-2 md:mb-3 lg:mb-3 xl:mb-3" style="font-family: 'Montserrat', sans-serif;">Arquitectura</h3>
             
-            <p class="text-gray-700 mb-3" style="font-family: 'Montserrat', sans-serif; font-size: 12px;">
+            <p class="text-gray-700 mb-2 sm:mb-2 md:mb-3 lg:mb-3 xl:mb-3 text-xs sm:text-xs md:text-sm lg:text-xs xl:text-xs" style="font-family: 'Montserrat', sans-serif;">
               Desarrollamos cada una de las etapas de Proyectos Arquitectónicos, Ejecutivos e Ingenierías, de géneros; Residencial, Comercial, Industrial y Esparcimiento
             </p>
 
-            <h3 class="text-xl font-semibold mb-3" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Diseño</h3>
+            <h3 class="text-base sm:text-base md:text-lg lg:text-xl xl:text-xl font-semibold mb-2 sm:mb-2 md:mb-3 lg:mb-3 xl:mb-3" style="font-family: 'Montserrat', sans-serif;">Diseño</h3>
 
-            <p class="text-gray-700 mb-3" style="font-family: 'Montserrat', sans-serif; font-size: 12px;">
+            <p class="text-gray-700 mb-2 sm:mb-2 md:mb-3 lg:mb-3 xl:mb-3 text-xs sm:text-xs md:text-sm lg:text-xs xl:text-xs" style="font-family: 'Montserrat', sans-serif;">
               Creamos por a través de nuevas Tecnologías los medios para diseñar Proyectos Interdisciplinarios, Diseño de Interior, Industrial y Paisajismo.
             </p>
-            <h3 class="text-xl font-semibold mb-3" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">Construcción</h3>
-            <p class="text-gray-700" style="font-family: 'Montserrat', sans-serif; font-size: 12px;">
+            <h3 class="text-base sm:text-base md:text-lg lg:text-xl xl:text-xl font-semibold mb-2 sm:mb-2 md:mb-3 lg:mb-3 xl:mb-3" style="font-family: 'Montserrat', sans-serif;">Construcción</h3>
+            <p class="text-gray-700 text-xs sm:text-xs md:text-sm lg:text-xs xl:text-xs" style="font-family: 'Montserrat', sans-serif;">
               Planeamos Integralmente la Construcción de Proyectos; evaluación del entorno, sistemas constructivos empleables, ingenieras aplicables, y economía eficiente.
+            </p>
           </div>
-          <div>
+          <div class="flex justify-center lg:justify-start xl:justify-start">
             <img 
               src="https://taanab.mx/images/about/experiencia.jpg" 
               alt="Arquitectura sostenible" 
-              class="w-[467.5px] h-[380px] object-cover"
+              class="w-full sm:w-full md:w-full lg:w-[467.5px] xl:w-[467.5px] h-48 sm:h-56 md:h-64 lg:h-[380px] xl:h-[380px] object-cover rounded-lg sm:rounded-lg md:rounded-lg lg:rounded-none xl:rounded-none"
             />
           </div>
         </div>
       </div>
     </section>
     
-    <!-- Separación con espacio en blanco -->
-    <div class="mb-16"></div>
+    <!-- Separación con espacio en blanco responsive -->
+    <div class="mb-8 sm:mb-10 md:mb-12 lg:mb-14 xl:mb-16"></div>
     
   </main>
   

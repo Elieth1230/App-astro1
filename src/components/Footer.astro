@@ -2,45 +2,45 @@
 // Footer elegante estilo arquitectónico con Tailwind
 ---
 
-<footer class="relative bg-white text-gray-800 overflow-hidden h-28">
+<footer class="relative bg-white text-gray-800 overflow-hidden h-20 sm:h-22 md:h-24 lg:h-26 xl:h-28">
   <!-- Patrón de puntos grises en el fondo -->
   <div class="absolute inset-0 opacity-20">
     <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.4) 1px, transparent 0); background-size: 6px 6px;"></div>
   </div>
 
-  <!-- Imagen a la derecha -->
-  <div class="absolute top-0 right-0 w-96 h-full">
+  <!-- Imagen a la derecha responsive -->
+  <div class="absolute top-0 right-0 w-48 sm:w-56 md:w-64 lg:w-80 xl:w-96 h-full">
     <img src="/img/img10.png" alt="Footer Background" class="w-full h-full object-cover">
   </div>
 
   <!-- Contenido del footer -->
   <div class="relative z-10 h-full flex items-center">
-    <div class="max-w-5xl mx-auto flex items-center w-full px-8">
+    <div class="max-w-sm sm:max-w-md md:max-w-3xl lg:max-w-4xl xl:max-w-5xl mx-auto flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row items-center w-full px-4 sm:px-6 md:px-8 lg:px-8 xl:px-8 gap-2 sm:gap-3 md:gap-0 lg:gap-0 xl:gap-0">
       
       <!-- Logo y nombre a la izquierda -->
       <div class="flex-shrink-0">
-        <a href="/" class="logo flex items-center gap-3">
+        <a href="/" class="logo flex items-center gap-2 sm:gap-2 md:gap-3 lg:gap-3 xl:gap-3">
           <!-------- Logo -------->
           <img 
         src="/img/logo.png" 
         alt="TAANAB Arquitectos" 
-        class="h-10 w-auto object-contain"
+        class="h-6 sm:h-7 md:h-8 lg:h-9 xl:h-10 w-auto object-contain"
       />
           
           <!-------- Nombre de la empresa -------->
           <div class="flex flex-col">
-            <span class="text-xl font-light text-gray-800 tracking-wider">TAANAB</span>
-            <span class="text-xs font-light text-gray-600 tracking-widest">ARQUITECTOS</span>
+            <span class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl font-light text-gray-800 tracking-wider">TAANAB</span>
+            <span class="text-xs sm:text-xs md:text-xs lg:text-xs xl:text-xs font-light text-gray-600 tracking-widest">ARQUITECTOS</span>
           </div>
         </a>
       </div>
 
       <!--- Información de contacto centrada --->
-      <div class="flex-1 flex justify-center pr-96">
-        <div class="space-y-1 text-center">
-          <p class="font-medium text-gray-800 text-lg">contacto@taanab.mx</p>
-          <p class="text-gray-700 text-sm">Concentro E18, Av Vallarta 6503</p>
-          <p class="text-gray-700 text-sm">Zapopan, Jalisco. México.</p>
+      <div class="flex-1 flex justify-center pr-0 sm:pr-0 md:pr-48 lg:pr-64 xl:pr-96">
+        <div class="space-y-0 sm:space-y-0 md:space-y-1 lg:space-y-1 xl:space-y-1 text-center">
+          <p class="font-medium text-gray-800 text-sm sm:text-sm md:text-base lg:text-lg xl:text-lg">contacto@taanab.mx</p>
+          <p class="text-gray-700 text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm hidden sm:hidden md:block lg:block xl:block">Concentro E18, Av Vallarta 6503</p>
+          <p class="text-gray-700 text-xs sm:text-xs md:text-sm lg:text-sm xl:text-sm hidden sm:hidden md:block lg:block xl:block">Zapopan, Jalisco. México.</p>
         </div>
       </div>
       
